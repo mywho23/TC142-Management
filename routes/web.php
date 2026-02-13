@@ -217,7 +217,16 @@ Route::middleware('auth.custom')->group(function () {
         });
     });
     Route::get('/gas-login', function () {
-        // 1. Hapus user lama biar gak bentrok (Opsional)
-        User::query()->delete();
+        // Tembak langsung ke nama tabelnya tanpa lewat Model
+        DB::table('tb_user')->insert([
+            'username'  => 'admin',
+            'email'     => 'admin@gmail.com',
+            'password'  => Hash::make('12345'),
+            'full_name' => 'Administrator',
+            'role_id'   => 1,
+            'status'    => 'active',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     });
 });
