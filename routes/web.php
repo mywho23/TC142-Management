@@ -19,6 +19,10 @@ use App\Http\Controllers\RekapJamController;
 use Faker\Guesser\Name;
 use Psy\CodeCleaner\FunctionContextPass;
 
+Route::get('/cek-hash', function () {
+    return Hash::make('123');
+});
+
 //Route::get('/welcom', function () { return view('welcome'); });
 Route::get('/testview', function () {
     return view('testview');
