@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username');
             $table->string('email');
-            $table->string('password');
+            $table->string('password', 500);
             $table->string('full_name');
             $table->integer('role_id');
             $table->string('status')->default('active'); // gue kasih default biar aman
