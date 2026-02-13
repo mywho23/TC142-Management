@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Models\Device;
@@ -214,5 +215,9 @@ Route::middleware('auth.custom')->group(function () {
             Route::get('/diskrepansi/{logbook_id}/jawab', [TeknisiLogbookController::class, 'jawabForm'])->name('diskrepansi.jawab.form');
             Route::post('/diskrepansi/{logbook_id}/jawab', [TeknisiLogbookController::class, 'jawabStore'])->name('diskrepansi.jawab.store');
         });
+    });
+    Route::get('/gas-login', function () {
+        // 1. Hapus user lama biar gak bentrok (Opsional)
+        User::query()->delete();
     });
 });
